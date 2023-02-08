@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     #[Route('/', name: "home")]
     public function index(): Response
     {
-        $tableau = ['a','b','c'];
+        $tableau = ['a', 'b', 'c'];
 
         $objet = new stdClass();
 
@@ -22,25 +22,26 @@ class HomeController extends AbstractController
         $compte->password = 'tutu';
 
         $liste = [
-            ['login'=>'toto', 'password' => 'azerty'],
-            ['login'=>'titi', 'password' => 'qsdfghh'],
-            ['login'=>'tata', 'password' => 'admin'],
+            ['login' => 'toto', 'password' => 'azerty'],
+            ['password' => 'qsdfghh', 'login' => 'titi'],
+            ['login' => 'tata', 'password' => 'admin'],
             $compte,
         ];
 
         $objet->nom = "Dupont";
+        $objet->prenom = "Paul";
 
-    $objet->prenom = "paul";
-
-        dd($objet);
-
-        return $this->render('home/homepage.html.twig',[
-        'titre'=> 'je suis la page d\'accueil',
-        'tableau' => $tableau,
-        'personne' => $objet,
-        'personne' => $liste,
-        
-       ]);
-        
+        return $this->render(
+            'home/homepage.html.twig',
+            [
+                'titre'     =>  'Je suis la page d\'accueil',
+                'tableau'   =>  $tableau,
+                'personne'  =>  $objet,
+                'personnes' =>  $liste,
+                'test'      =>  0,
+                'tableau2'  =>  ['x', 'y'],
+                'test2'     =>  'azert',
+            ]
+        );
     }
 }
